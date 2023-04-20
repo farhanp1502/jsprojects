@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital clock</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="time"></div>
+      
+      <script>
+        function t() {
+          let date = new Date();
+          let h = date.getHours();
+          let m = date.getMinutes();
+          let s = date.getSeconds();
+          let session;
+          if (h < 12) {
+            session = "AM";
+          } else {
+            session = "PM";
+          }
+
+          if (h > 12) {
+            h = h - 12;
+          }
+
+          h = h < 10 ? "0" + h : h;
+          m = m < 10 ? "0" + m : m;
+          s = s < 10 ? "0" + s : s;
+          document.getElementById("time").innerHTML =
+            h + ":" + m + ":" + s + " " + session;
+          setTimeout(t, 1000);
+        }
+        t();
+      </script>
+    </div>
+  </body>
+</html>
